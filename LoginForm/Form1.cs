@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LoginForm.Models;
+using LoginForm.Repositories;
+using System;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
@@ -12,10 +14,12 @@ namespace LoginForm
             InitializeComponent();
         }
 
-        private string conString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=form_db;Integrated Security=True";
-
         private string placeholderUser = "Username";
         private string placeholderPass = "Password";
+        private string placeholderEmail = "Email";
+        private string placeholderPhone = "Phone";
+
+        private string conString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=form_db;Integrated Security=True";
 
 
         private void txtUsername_Enter(object sender, EventArgs e)
@@ -101,56 +105,35 @@ namespace LoginForm
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string password = txtPass.Text;
-            string username = txtUsername.Text;
-            bool dUser = getUsername(username) == username;
-            string q = "INSERT INTO [user](username,password) VALUES(@username, @password)";
+            var user = new User();
 
-            if (txtUsername.Text != placeholderUser && txtPass.Text != placeholderPass)
+            string password = user.password = BCrypt.Net.BCrypt.HashPassword(txtPass.Text, 13);
+            string username = user.username = txtUsername.Text;
+            user.email = txtEmail.Text;
+            user.phone = int.Parse(txtPhone.Text);
+            bool dUser = getUsername(username) == username;
+
+            if (txtPass.Text != null || txtUsername != null)
             {
                 if (!dUser)
                 {
+                    var repo = new UserRepository();
+                    repo.CreateUser(user);
 
-                    string pass = txtPass.Text.ToString();
-                    string hashedPass = BCrypt.Net.BCrypt.HashPassword(pass, 13);
-
-                    using (SqlConnection con = new SqlConnection(conString))
-                    {
-                        using (SqlCommand cmd = new SqlCommand(q, con))
-                        {
-                            cmd.Parameters.AddWithValue("@username", txtUsername.Text.ToString());
-                            cmd.Parameters.AddWithValue("@password", hashedPass);
-
-                            try
-                            {
-                                con.Open();
-                                cmd.ExecuteNonQuery();
-                                MessageBox.Show("Connection Success");
-                                txtUsername.Clear();
-                                txtPass.Clear();
-                            }
-                            catch (SqlException ex)
-                            {
-                                MessageBox.Show("Database Error: " + ex.Message);
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show("Error: " + ex.Message);
-                            }
-
-                        }
-                    }
+                    AdminDashboard p = new AdminDashboard(username);
+                    p.Show();
+                    this.Hide();
+                    txtUsername.Clear();
+                    txtPass.Clear();
                 }
                 else
                 {
-                    MessageBox.Show("Username already exist");
-                    txtPass.Clear();
-                    txtUsername.Clear();
+                    MessageBox.Show("Username already taken");
                 }
             }
             else
             {
-                MessageBox.Show("Please fill in the form!");
+                MessageBox.Show("Please fill all the form");
             }
         }
 
@@ -164,6 +147,50 @@ namespace LoginForm
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtEmail_Enter(object sender, EventArgs e)
+        {
+            if (txtEmail.Text == placeholderEmail)
+            {
+                txtEmail.Clear();
+                txtEmail.ForeColor = Color.Black;
+            }
+            else
+            {
+                txtEmail.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtEmail_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtEmail.Text))
+            {
+                txtEmail.Text = placeholderEmail;
+                txtEmail.ForeColor = Color.Gray;
+            }
+        }
+
+        private void txtPhone_Enter(object sender, EventArgs e)
+        {
+            if (txtPhone.Text == placeholderPhone)
+            {
+                txtPhone.Clear();
+                txtPhone.ForeColor = Color.Black;
+            }
+            else
+            {
+                txtPhone.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtPhone_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtPhone.Text))
+            {
+                txtPhone.Text = placeholderPhone;
+                txtPhone.ForeColor = Color.Gray;
+            }
         }
     }
 }

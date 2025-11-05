@@ -29,6 +29,8 @@ namespace LoginForm.Repositories
                                 user.id = reader.GetInt32(0);
                                 user.username = reader.GetString(1);
                                 user.password = reader.GetString(2);
+                                user.email = reader.GetString(3);
+                                user.phone = reader.GetInt32(4);
 
                                 UserList.Add(user);
                             }
@@ -67,6 +69,8 @@ namespace LoginForm.Repositories
                                 user.id = reader.GetInt32(0);
                                 user.username = reader.GetString(1);
                                 user.password = reader.GetString(2);
+                                user.email = reader.GetString(3);
+                                user.phone = reader.GetInt32(4);
 
                                 return user;
                             }
@@ -87,9 +91,9 @@ namespace LoginForm.Repositories
             return null;
         }
 
-        private void CreateUser(User user)
+        public void CreateUser(User user)
         {
-            string q = "INSERT INTO [user](username,password) VALUES(@username,@password)";
+            string q = "INSERT INTO [user](username,password,email,phone) VALUES(@username,@password,@email,@phone)";
             try
             {
                 using (SqlConnection con = new SqlConnection(conString))
@@ -99,6 +103,8 @@ namespace LoginForm.Repositories
                         con.Open();
                         cmd.Parameters.AddWithValue("@username", user.username);
                         cmd.Parameters.AddWithValue("@password", user.password);
+                        cmd.Parameters.AddWithValue("@email", user.email);
+                        cmd.Parameters.AddWithValue("@phone", user.phone);
 
                         cmd.ExecuteNonQuery();
 
@@ -116,9 +122,10 @@ namespace LoginForm.Repositories
             }
         }
 
-        private void UpdateUser(User user)
+        public void UpdateUser(User user)
         {
-            string q = "UPDATE INTO [user](username,password) VALUES(@username,@password)";
+            string q = "UPDATE [user] SET username=@username, password=@password, email=@email, phone=@phone WHERE id=@id";
+
             try
             {
                 using (SqlConnection con = new SqlConnection(conString))
@@ -126,26 +133,28 @@ namespace LoginForm.Repositories
                     using (SqlCommand cmd = new SqlCommand(q, con))
                     {
                         con.Open();
+
                         cmd.Parameters.AddWithValue("@username", user.username);
                         cmd.Parameters.AddWithValue("@password", user.password);
+                        cmd.Parameters.AddWithValue("@email", user.email);
+                        cmd.Parameters.AddWithValue("@phone", user.phone);
+                        cmd.Parameters.AddWithValue("@id", user.id);
 
                         cmd.ExecuteNonQuery();
-
                     }
                 }
-
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Database Error: " + ex);
+                MessageBox.Show("Database Error: " + ex.Message);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex);
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
 
-        private void DeleteUser(User user)
+        public void DeleteUser(User user)
         {
             string q = "DELETE FROM [user] WHERE @id=id";
             try

@@ -35,11 +35,14 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.tableUser = new System.Windows.Forms.DataGridView();
-            this.Select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Edit = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtSrc = new System.Windows.Forms.TextBox();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.userRepositoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.userRepositoryBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tableUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userRepositoryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userRepositoryBindingSource1)).BeginInit();
@@ -57,6 +60,8 @@
             // 
             // tableUser
             // 
+            this.tableUser.AllowUserToAddRows = false;
+            this.tableUser.AllowUserToDeleteRows = false;
             this.tableUser.AllowUserToResizeColumns = false;
             this.tableUser.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -78,8 +83,8 @@
             this.tableUser.ColumnHeadersHeight = 30;
             this.tableUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.tableUser.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Select,
-            this.Edit});
+            this.Edit,
+            this.Delete});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -88,7 +93,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.tableUser.DefaultCellStyle = dataGridViewCellStyle3;
-            this.tableUser.Location = new System.Drawing.Point(42, 117);
+            this.tableUser.Location = new System.Drawing.Point(42, 164);
             this.tableUser.Name = "tableUser";
             this.tableUser.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -102,14 +107,9 @@
             this.tableUser.RowHeadersVisible = false;
             this.tableUser.RowTemplate.Height = 30;
             this.tableUser.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tableUser.Size = new System.Drawing.Size(716, 318);
+            this.tableUser.Size = new System.Drawing.Size(716, 271);
             this.tableUser.TabIndex = 1;
             this.tableUser.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableUser_CellContentClick);
-            // 
-            // Select
-            // 
-            this.Select.HeaderText = "";
-            this.Select.Name = "Select";
             // 
             // Edit
             // 
@@ -123,16 +123,20 @@
             this.Edit.UseColumnTextForLinkValue = true;
             this.Edit.VisitedLinkColor = System.Drawing.Color.Coral;
             // 
-            // userRepositoryBindingSource
+            // Delete
             // 
-            this.userRepositoryBindingSource.DataSource = typeof(LoginForm.Repositories.UserRepository);
-            // 
-            // userRepositoryBindingSource1
-            // 
-            this.userRepositoryBindingSource1.DataSource = typeof(LoginForm.Repositories.UserRepository);
+            this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Delete.HeaderText = "Delete";
+            this.Delete.LinkColor = System.Drawing.Color.Red;
+            this.Delete.Name = "Delete";
+            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Delete.Text = "Delete";
+            this.Delete.UseColumnTextForLinkValue = true;
+            this.Delete.VisitedLinkColor = System.Drawing.Color.Red;
             // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.BackColor = System.Drawing.Color.DodgerBlue;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -146,16 +150,55 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(39, 131);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(37, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Action";
+            // 
+            // txtSrc
+            // 
+            this.txtSrc.Location = new System.Drawing.Point(82, 127);
+            this.txtSrc.Name = "txtSrc";
+            this.txtSrc.Size = new System.Drawing.Size(169, 20);
+            this.txtSrc.TabIndex = 6;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.BackgroundImage = global::LoginForm.Properties.Resources.refresh;
+            this.btnRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRefresh.Location = new System.Drawing.Point(263, 126);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(26, 23);
+            this.btnRefresh.TabIndex = 7;
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // userRepositoryBindingSource
+            // 
+            this.userRepositoryBindingSource.DataSource = typeof(LoginForm.Repositories.UserRepository);
+            // 
+            // userRepositoryBindingSource1
+            // 
+            this.userRepositoryBindingSource1.DataSource = typeof(LoginForm.Repositories.UserRepository);
+            // 
             // SiswaAdminControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
+            this.Controls.Add(this.btnRefresh);
+            this.Controls.Add(this.txtSrc);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tableUser);
             this.Controls.Add(this.label1);
             this.Name = "SiswaAdminControl";
             this.Size = new System.Drawing.Size(807, 509);
+            this.Load += new System.EventHandler(this.SiswaAdminControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tableUser)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.userRepositoryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.userRepositoryBindingSource1)).EndInit();
@@ -170,8 +213,11 @@
         private System.Windows.Forms.DataGridView tableUser;
         private System.Windows.Forms.BindingSource userRepositoryBindingSource;
         private System.Windows.Forms.BindingSource userRepositoryBindingSource1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Select;
-        private System.Windows.Forms.DataGridViewLinkColumn Edit;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtSrc;
+        private System.Windows.Forms.DataGridViewLinkColumn Edit;
+        private System.Windows.Forms.DataGridViewLinkColumn Delete;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.linkLogout = new System.Windows.Forms.LinkLabel();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.txtUser = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.linkLogout = new System.Windows.Forms.LinkLabel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,11 +47,11 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.panel1.Controls.Add(this.linkLogout);
-            this.panel1.Controls.Add(this.linkLabel1);
+            this.panel1.BackColor = System.Drawing.Color.SteelBlue;
             this.panel1.Controls.Add(this.txtUser);
             this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.linkLogout);
+            this.panel1.Controls.Add(this.linkLabel1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label3);
@@ -61,13 +61,40 @@
             this.panel1.Size = new System.Drawing.Size(1053, 48);
             this.panel1.TabIndex = 1;
             // 
+            // txtUser
+            // 
+            this.txtUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtUser.AutoSize = true;
+            this.txtUser.BackColor = System.Drawing.Color.Transparent;
+            this.txtUser.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUser.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtUser.Location = new System.Drawing.Point(696, 10);
+            this.txtUser.Name = "txtUser";
+            this.txtUser.Size = new System.Drawing.Size(50, 25);
+            this.txtUser.TabIndex = 5;
+            this.txtUser.Text = "User";
+            this.txtUser.Click += new System.EventHandler(this.txtUser_Click);
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label4.Location = new System.Drawing.Point(609, 10);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(99, 25);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Welcome, ";
+            // 
             // linkLogout
             // 
             this.linkLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLogout.AutoSize = true;
             this.linkLogout.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLogout.LinkColor = System.Drawing.SystemColors.HighlightText;
-            this.linkLogout.Location = new System.Drawing.Point(959, 9);
+            this.linkLogout.Location = new System.Drawing.Point(934, 10);
             this.linkLogout.Name = "linkLogout";
             this.linkLogout.Size = new System.Drawing.Size(71, 25);
             this.linkLogout.TabIndex = 7;
@@ -81,37 +108,12 @@
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel1.LinkColor = System.Drawing.SystemColors.HighlightText;
-            this.linkLabel1.Location = new System.Drawing.Point(873, 9);
+            this.linkLabel1.Location = new System.Drawing.Point(867, 10);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(62, 25);
             this.linkLabel1.TabIndex = 6;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Home";
-            // 
-            // txtUser
-            // 
-            this.txtUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtUser.AutoSize = true;
-            this.txtUser.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUser.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtUser.Location = new System.Drawing.Point(701, 9);
-            this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(50, 25);
-            this.txtUser.TabIndex = 5;
-            this.txtUser.Text = "User";
-            this.txtUser.Click += new System.EventHandler(this.txtUser_Click);
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label4.Location = new System.Drawing.Point(615, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(99, 25);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Welcome, ";
             // 
             // label2
             // 
@@ -171,6 +173,7 @@
             this.button1.Text = "Jadwal";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnSiswa
             // 
@@ -192,7 +195,7 @@
             // 
             // btnHome
             // 
-            this.btnHome.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnHome.BackColor = System.Drawing.Color.SteelBlue;
             this.btnHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnHome.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnHome.FlatAppearance.BorderSize = 0;
@@ -225,6 +228,7 @@
             this.Controls.Add(this.pnlContent);
             this.Controls.Add(this.pnlSideBar);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "AdminDashboard";
             this.Text = "AdminDashboard";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

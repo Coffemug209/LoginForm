@@ -1,5 +1,6 @@
-﻿using System;
-using System.Data.SqlClient;
+﻿using LoginForm.Models;
+using LoginForm.Repositories;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -10,18 +11,23 @@ namespace LoginForm
         public CreateEdit()
         {
             InitializeComponent();
+            this.DialogResult = DialogResult.Cancel;
         }
 
         private string placeholderUser = "Username";
         private string placeholderPass = "Password";
-        private string conString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=form_db;Integrated Security=True";
-
+        private string placeholderEmail = "Email";
+        private string placeholderPhone = "Phone";
 
         private void txtUsername_Enter_1(object sender, EventArgs e)
         {
             if (txtUsername.Text == placeholderUser)
             {
                 txtUsername.Clear();
+                txtUsername.ForeColor = Color.Black;
+            }
+            else
+            {
                 txtUsername.ForeColor = Color.Black;
             }
         }
@@ -32,6 +38,50 @@ namespace LoginForm
             {
                 txtUsername.Text = placeholderUser;
                 txtUsername.ForeColor = Color.Gray;
+            }
+        }
+
+        private void txtEmail_Enter(object sender, EventArgs e)
+        {
+            if (txtEmail.Text == placeholderEmail)
+            {
+                txtEmail.Clear();
+                txtEmail.ForeColor = Color.Black;
+            }
+            else
+            {
+                txtEmail.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtEmail_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtEmail.Text))
+            {
+                txtEmail.Text = placeholderEmail;
+                txtEmail.ForeColor = Color.Gray;
+            }
+        }
+
+        private void txtPhone_Enter(object sender, EventArgs e)
+        {
+            if (txtPhone.Text == placeholderPhone)
+            {
+                txtPhone.Clear();
+                txtPhone.ForeColor = Color.Black;
+            }
+            else
+            {
+                txtPhone.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtPhone_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtPhone.Text))
+            {
+                txtPhone.Text = placeholderPhone;
+                txtPhone.ForeColor = Color.Gray;
             }
         }
 
@@ -70,6 +120,7 @@ namespace LoginForm
 
         private void button3_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
@@ -79,57 +130,45 @@ namespace LoginForm
             txtPass.Clear();
         }
 
-        private string getUsername(string username)
+        private int userId = 0;
+
+        public void editUser(User user)
         {
-            string q = "SELECT username FROM [user] WHERE @username=username";
-            string user = null;
+            this.txtUsername.Text = user.username;
+            this.txtEmail.Text = user.email;
+            this.txtPhone.Text = "" + user.phone;
+            this.userId = user.id;
 
-            using (SqlConnection con = new SqlConnection(conString))
-            {
-                using (SqlCommand cmd = new SqlCommand(q, con))
-                {
-                    cmd.Parameters.AddWithValue("@username", username);
-
-                    try
-                    {
-                        con.Open();
-                        object result = cmd.ExecuteScalar();
-                        if (result != null)
-                        {
-                            user = result.ToString();
-                        }
-                    }
-                    catch (SqlException ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                }
-            }
-            return user;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string username = txtUsername.Text.ToString();
-            string password = txtPass.Text.ToString();
-            bool dUser = getUsername(username) == username;
-            string q = "INSERT INTO [user](username,password) VALUES(@username,@password)";
+            string username = txtUsername.Text;
+            string phoneText = txtPhone.Text;
 
-            if (password != placeholderPass && username != placeholderUser)
+            User user = new User();
+            user.id = userId;
+            user.username = txtUsername.Text;
+            user.email = txtEmail.Text;
+            user.phone = int.Parse(phoneText);
+            user.password = BCrypt.Net.BCrypt.HashPassword(txtPass.Text, 13);
+
+            var repo = new UserRepository();
+            if (user.id == 0)
             {
-                if (!dUser)
-                {
-                    string hashedPass = BCrypt.Net.BCrypt.HashPassword(password, 13);
-                    using (SqlConnection con = new SqlConnection(conString))
-                    {
-                        using (SqlCommand cmd = new SqlCommand(q, con))
-                        {
-                            cmd.Parameters.AddWithValue("@username", username);
-                            cmd.Parameters.AddWithValue("@passwrod", hashedPass);
-                        }
-                    }
-                }
+                repo.CreateUser(user);
             }
+            else
+            {
+                repo.UpdateUser(user);
+            }
+
+            this.DialogResult = DialogResult.OK;
+        }
+
+        private void CreateEdit_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

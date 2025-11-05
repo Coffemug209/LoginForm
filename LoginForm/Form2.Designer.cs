@@ -51,19 +51,19 @@
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.linkLabel1.LinkColor = System.Drawing.SystemColors.ActiveCaption;
-            this.linkLabel1.Location = new System.Drawing.Point(317, 368);
+            this.linkLabel1.LinkColor = System.Drawing.Color.SkyBlue;
+            this.linkLabel1.Location = new System.Drawing.Point(304, 365);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(41, 13);
+            this.linkLabel1.Size = new System.Drawing.Size(75, 13);
             this.linkLabel1.TabIndex = 17;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Create!";
+            this.linkLabel1.Text = "Register Here!";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(195, 368);
+            this.label2.Location = new System.Drawing.Point(186, 365);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(122, 13);
             this.label2.TabIndex = 16;
@@ -131,11 +131,13 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button1.BackColor = System.Drawing.Color.SteelBlue;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.Location = new System.Drawing.Point(183, 318);
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button1.Location = new System.Drawing.Point(187, 318);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(184, 41);
+            this.button1.Size = new System.Drawing.Size(190, 41);
             this.button1.TabIndex = 11;
             this.button1.Text = "Login";
             this.button1.UseVisualStyleBackColor = false;
@@ -167,7 +169,7 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel5.BackColor = System.Drawing.Color.SteelBlue;
             this.panel5.Controls.Add(this.label3);
             this.panel5.Location = new System.Drawing.Point(1, 0);
             this.panel5.Name = "panel5";

@@ -51,7 +51,7 @@ namespace LoginForm
                     button.ForeColor = Color.Black;
                 }
 
-                clickedButton.BackColor = Color.LightSteelBlue;
+                clickedButton.BackColor = Color.SteelBlue;
                 clickedButton.Font = new Font("Segoe UI", 10, FontStyle.Bold);
                 clickedButton.ForeColor = Color.Black;
             }
@@ -67,6 +67,10 @@ namespace LoginForm
         {
             SwitchControl(new SiswaAdminControl());
             HighlightButton(btnSiswa);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
         }
     }
 }

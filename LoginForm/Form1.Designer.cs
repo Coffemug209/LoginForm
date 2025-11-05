@@ -42,10 +42,18 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.txtPhone = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel5.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -74,12 +82,14 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button1.BackColor = System.Drawing.Color.SteelBlue;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(183, 318);
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.button1.Location = new System.Drawing.Point(182, 310);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(184, 41);
+            this.button1.Size = new System.Drawing.Size(192, 49);
             this.button1.TabIndex = 2;
             this.button1.Text = "Register";
             this.button1.UseVisualStyleBackColor = false;
@@ -91,7 +101,7 @@
             this.txtPass.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPass.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.txtPass.Location = new System.Drawing.Point(58, 206);
+            this.txtPass.Location = new System.Drawing.Point(58, 255);
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(430, 13);
             this.txtPass.TabIndex = 3;
@@ -102,7 +112,7 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(57, 225);
+            this.panel1.Location = new System.Drawing.Point(57, 274);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(430, 1);
             this.panel1.TabIndex = 5;
@@ -135,7 +145,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(195, 362);
+            this.label2.Location = new System.Drawing.Point(185, 367);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(132, 13);
             this.label2.TabIndex = 7;
@@ -145,20 +155,20 @@
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.linkLabel1.LinkColor = System.Drawing.SystemColors.ActiveCaption;
-            this.linkLabel1.Location = new System.Drawing.Point(324, 362);
+            this.linkLabel1.LinkColor = System.Drawing.Color.SkyBlue;
+            this.linkLabel1.Location = new System.Drawing.Point(314, 367);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(36, 13);
+            this.linkLabel1.Size = new System.Drawing.Size(60, 13);
             this.linkLabel1.TabIndex = 8;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Login!";
+            this.linkLabel1.Text = "Login here!";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Image = global::LoginForm.Properties.Resources.icon_hide;
-            this.pictureBox1.Location = new System.Drawing.Point(467, 206);
+            this.pictureBox1.Location = new System.Drawing.Point(467, 255);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(20, 20);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -168,7 +178,7 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel5.BackColor = System.Drawing.Color.SteelBlue;
             this.panel5.Controls.Add(this.label3);
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
@@ -186,11 +196,77 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Class Cleaning Management";
             // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel7.Controls.Add(this.panel8);
+            this.panel7.Location = new System.Drawing.Point(58, 205);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(430, 1);
+            this.panel7.TabIndex = 16;
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel8.Location = new System.Drawing.Point(0, -33);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(430, 1);
+            this.panel8.TabIndex = 6;
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.BackColor = System.Drawing.SystemColors.Menu;
+            this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.txtEmail.Location = new System.Drawing.Point(59, 186);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(430, 13);
+            this.txtEmail.TabIndex = 14;
+            this.txtEmail.Text = "Email";
+            this.txtEmail.Enter += new System.EventHandler(this.txtEmail_Enter);
+            this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel6.Controls.Add(this.panel9);
+            this.panel6.Location = new System.Drawing.Point(57, 239);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(430, 1);
+            this.panel6.TabIndex = 17;
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel9.Location = new System.Drawing.Point(0, -33);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(430, 1);
+            this.panel9.TabIndex = 6;
+            // 
+            // txtPhone
+            // 
+            this.txtPhone.BackColor = System.Drawing.SystemColors.Menu;
+            this.txtPhone.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPhone.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.txtPhone.Location = new System.Drawing.Point(58, 220);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(430, 13);
+            this.txtPhone.TabIndex = 15;
+            this.txtPhone.Text = "Phone";
+            this.txtPhone.Enter += new System.EventHandler(this.txtPhone_Enter);
+            this.txtPhone.Leave += new System.EventHandler(this.txtEmail_Leave);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(555, 450);
+            this.Controls.Add(this.panel7);
+            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.panel6);
+            this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label2);
@@ -201,16 +277,18 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Register";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -232,6 +310,12 @@
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.TextBox txtPhone;
     }
 }
 
